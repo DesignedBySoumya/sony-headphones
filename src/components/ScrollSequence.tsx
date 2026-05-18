@@ -99,7 +99,7 @@ const ScrollSequence = () => {
   return (
     <div ref={containerRef} className="relative w-full h-[500vh] bg-[#050505]">
       {/* Sticky Canvas Container */}
-      <div className="sticky top-0 w-full h-screen overflow-hidden">
+      <div className="sticky top-0 w-full h-[100dvh] overflow-hidden">
         {/* Loading overlay */}
         {loaded < FRAME_COUNT && (
           <div className="absolute inset-0 z-50 flex items-center justify-center bg-[#050505] text-white">
@@ -123,54 +123,54 @@ const ScrollSequence = () => {
         />
 
         {/* Cinematic Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505] opacity-50 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505] opacity-60 pointer-events-none" />
 
         {/* Text Segments */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-4 sm:px-8">
           <motion.div 
             style={{ opacity: text1Opacity }}
-            className="absolute flex flex-col items-center text-center mt-[30vh]"
+            className="absolute flex flex-col items-center text-center mt-[20vh] sm:mt-[30vh] px-4"
           >
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter text-white mb-4 leading-tight">
               Engineered for Silence.
             </h2>
-            <p className="text-lg md:text-xl text-white/70 max-w-lg">
+            <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-lg">
               The new WH-1000XM6 delivers unparalleled noise cancellation.
             </p>
           </motion.div>
 
           <motion.div 
             style={{ opacity: text2Opacity }}
-            className="absolute flex flex-col items-start w-full max-w-6xl px-8 mt-[-10vh]"
+            className="absolute flex flex-col items-start w-full max-w-6xl mt-[-5vh] sm:mt-[-10vh]"
           >
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-white mb-2">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tighter text-white mb-2 leading-tight">
               Acoustic Architecture
             </h2>
-            <p className="text-lg text-white/70 max-w-md">
+            <p className="text-base sm:text-lg text-white/70 max-w-xs sm:max-w-md">
               Custom 40mm drivers deliver pristine audio with exceptional clarity across all frequencies.
             </p>
           </motion.div>
 
           <motion.div 
             style={{ opacity: text3Opacity }}
-            className="absolute flex flex-col items-end text-right w-full max-w-6xl px-8 mt-[10vh]"
+            className="absolute flex flex-col items-end text-right w-full max-w-6xl mt-[5vh] sm:mt-[10vh]"
           >
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-[#00D6FF] mb-2 drop-shadow-[0_0_15px_rgba(0,214,255,0.5)]">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tighter text-[#00D6FF] mb-2 drop-shadow-[0_0_15px_rgba(0,214,255,0.5)] leading-tight">
               Next-Gen Processing
             </h2>
-            <p className="text-lg text-white/70 max-w-md">
+            <p className="text-base sm:text-lg text-white/70 max-w-xs sm:max-w-md">
               Dual V1 processors analyze environmental noise millions of times per second.
             </p>
           </motion.div>
 
           <motion.div 
             style={{ opacity: text4Opacity }}
-            className="absolute flex flex-col items-center text-center mt-[35vh]"
+            className="absolute flex flex-col items-center text-center mt-[25vh] sm:mt-[35vh]"
           >
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-white mb-4 sm:mb-6">
               WH-1000XM6
             </h2>
-            <button className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-200 transition-colors pointer-events-auto">
+            <button className="bg-white text-black px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-gray-200 transition-colors pointer-events-auto text-sm sm:text-base">
               Pre-order Now
             </button>
           </motion.div>
