@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, AnimatePresence, MotionValue, useTransform } from "framer-motion";
+import { motion, MotionValue, useTransform } from "framer-motion";
 
 /* ------------------------------------------------------------------ */
 /*  Chapter config                                                     */

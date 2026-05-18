@@ -1,7 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
+
+// Chapter dots static configuration
+const CHAPTER_POINTS = [0, 0.16, 0.33, 0.5, 0.66, 0.82, 1];
+const CHAPTER_LABELS = ["Intro", "Reveal", "ANC", "Acoustic", "Battery", "Rebuild", "CTA"];
 
 export default function ProgressIndicator() {
   const { scrollYProgress } = useScroll();
@@ -11,10 +15,6 @@ export default function ProgressIndicator() {
     restDelta: 0.001,
   });
 
-  // Chapter dots
-  const chapters = [0, 0.16, 0.33, 0.5, 0.66, 0.82, 1];
-  const labels = ["Intro", "Reveal", "ANC", "Acoustic", "Battery", "Rebuild", "CTA"];
-
   const [activeChapter, setActiveChapter] = React.useState(0);
   const [scrollPct, setScrollPct] = React.useState(0);
 
@@ -22,8 +22,8 @@ export default function ProgressIndicator() {
     return scrollYProgress.on("change", (v) => {
       setScrollPct(v);
       let idx = 0;
-      for (let i = 0; i < chapters.length; i++) {
-        if (v >= chapters[i] - 0.04) idx = i;
+      for (let i = 0; i < CHAPTER_POINTS.length; i++) {
+        if (v >= CHAPTER_POINTS[i] - 0.04) idx = i;
       }
       setActiveChapter(idx);
     });
@@ -41,20 +41,20 @@ export default function ProgressIndicator() {
         aria-label="Page chapters"
         className="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-3"
       >
-        {chapters.map((_, i) => (
+        {CHAPTER_POINTS.map((_, i) => (
           <button
             key={i}
-            title={labels[i]}
-            aria-label={`Go to chapter: ${labels[i]}`}
+            title={CHAPTER_LABELS[i]}
+            aria-label={`Go to chapter: ${CHAPTER_LABELS[i]}`}
             onClick={() => {
-              const target = chapters[i] * (document.documentElement.scrollHeight - window.innerHeight);
+              const target = CHAPTER_POINTS[i] * (document.documentElement.scrollHeight - window.innerHeight);
               window.scrollTo({ top: target, behavior: "smooth" });
             }}
             className="group relative flex items-center justify-end gap-2 cursor-pointer"
           >
             {/* Label tooltip */}
             <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-[10px] font-medium tracking-widest uppercase text-white/40 whitespace-nowrap">
-              {labels[i]}
+              {CHAPTER_LABELS[i]}
             </span>
             {/* Dot */}
             <div
